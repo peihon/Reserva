@@ -1,7 +1,7 @@
 package com.uniamerica.prova2.model;
 
-import java.util.Date;
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Reserva {
@@ -10,15 +10,26 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique=true)
-    private String status;
+    private Date dataDeRetirada;
 
-    private Date dataRetirada;
+    private Date dataDeDevolucao;
 
-    private Date dataDevolucao;
+    private Status status;
 
-    @OneToOne
+    @ManyToOne
     private Carro carro;
+
+    public enum Status {
+        RESERVADO, EM_ANDAMENTO, FINALIZADO;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 
     public Long getId() {
         return id;
@@ -28,28 +39,20 @@ public class Reserva {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public Date getDataDeRetirada() {
+        return dataDeRetirada;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDataDeRetirada(Date dataDeRetirada) {
+        this.dataDeRetirada = dataDeRetirada;
     }
 
-    public Date getDataRetirada() {
-        return dataRetirada;
+    public Date getDataDeDevolucao() {
+        return dataDeDevolucao;
     }
 
-    public void setDataRetirada(Date dataRetirada) {
-        this.dataRetirada = dataRetirada;
-    }
-
-    public Date getDataDevolucao() {
-        return dataDevolucao;
-    }
-
-    public void setDataDevolucao(Date dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
+    public void setDataDeDevolucao(Date dataDeDevolucao) {
+        this.dataDeDevolucao = dataDeDevolucao;
     }
 
     public Carro getCarro() {
@@ -59,4 +62,5 @@ public class Reserva {
     public void setCarro(Carro carro) {
         this.carro = carro;
     }
+
 }

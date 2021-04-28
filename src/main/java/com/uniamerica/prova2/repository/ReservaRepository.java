@@ -1,12 +1,14 @@
 package com.uniamerica.prova2.repository;
 
+import com.uniamerica.prova2.model.Carro;
 import com.uniamerica.prova2.model.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ReservaRepository extends JpaRepository<Reserva, Long>{
+import java.util.List;
 
-    Reserva findByStatus (String status);
+@Repository
+public interface ReservaRepository extends JpaRepository<Reserva, Long> {
+    List<Reserva> findByCarro(Carro carro);
 
 }

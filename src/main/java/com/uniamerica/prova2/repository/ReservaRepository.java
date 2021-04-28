@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReservaRepository extends JpaRepository<Reserva, Long>{
 
-
+    Reserva findByStatus (String status);
 
 }

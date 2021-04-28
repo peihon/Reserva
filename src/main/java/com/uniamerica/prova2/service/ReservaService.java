@@ -17,4 +17,9 @@ public class ReservaService {
     public Reserva insereReserva(Reserva reserva){
         return reservaRepository.save(reserva);
     }
+
+
+    public Reserva findByStatus(String status) {
+        return reservaRepository.findByStatus(status);
+    }
 }
